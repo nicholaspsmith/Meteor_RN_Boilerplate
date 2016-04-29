@@ -1,4 +1,4 @@
-Credit to [spencercarli](https://github.com/spencercarli/react-native-meteor-boilerplate)
+Forked from [spencercarli/react-native-meteor-boilerplate](https://github.com/spencercarli/react-native-meteor-boilerplate)
 
 # React Native - Meteor Boilerplate
 
