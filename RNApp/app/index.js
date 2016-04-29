@@ -1,11 +1,13 @@
 import React, {
   View,
+  StyleSheet,
   Component,
   Text
  } from 'react-native';
 
 import SignIn from './containers/signIn';
 import SignOut from './containers/signOut';
+import Button from './components/button';
 
 import ddpClient from './ddp';
 
@@ -56,9 +58,13 @@ export default class RNApp extends Component {
     }
   }
 
-  handleIncrement() {}
-  
-  handleDecrement() {}
+  handleIncrement() {
+    ddpClient.call('addPost');
+  }
+
+  handleDecrement() {
+    ddpClient.call('deletePost');
+  }
 
   handleSignedInStatus(status = false) {
     this.setState({ signedIn: status });
@@ -69,10 +75,20 @@ export default class RNApp extends Component {
     let { connected, signedIn } = this.state;
     if (connected && signedIn) {
       return (
+        <View style={styles.container}>
           <SignOut
             changedSignedIn={(status) => this.handleSignedInStatus(status)}
             count={count}
             />
+          <View style={styles.view}>
+            <Button
+            text="+"
+            onPress={this.handleIncrement.bind(this)} />
+            <Button
+            text="-"
+            onPress={this.handleDecrement.bind(this)} />
+          </View>
+        </View>
       );
     } else {
       return (
@@ -84,3 +100,15 @@ export default class RNApp extends Component {
     }
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
+  view: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row'
+  }
+});
