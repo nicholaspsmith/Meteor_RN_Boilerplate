@@ -1,3 +1,5 @@
+Credit to [spencercarli](https://github.com/spencercarli/react-native-meteor-boilerplate)
+
 # React Native - Meteor Boilerplate
 
 A starting point for integrating a React Native app with a Meteor app. I've used this file structure in large, multi-developer projects.
